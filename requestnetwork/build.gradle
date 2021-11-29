@@ -1,5 +1,20 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.Andromeda606'
+                artifactId = 'RequestNetwork'
+                version = '1'
+            }
+        }
+    }
 }
 
 android {
