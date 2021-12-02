@@ -2,8 +2,6 @@ package com.andromeda.requestnetwork.request;
 
 import android.app.Activity;
 
-import com.google.gson.reflect.TypeToken;
-
 import java.util.HashMap;
 
 import okhttp3.Headers;
@@ -52,18 +50,13 @@ public class RequestNetwork {
         RequestNetworkController.getInstance().execute(this, method, url, requestListener);
     }
     
-    public void request(String method, String url) {
-        RequestNetworkController.getInstance().request(this, method, url);
+    public Response request(String method, String url) {
+        return RequestNetworkController.getInstance().executeAsync(this, method, url);
     }
 
 
     public interface RequestListener {
         void onResponse(String response, Response request);
-        void onErrorResponse(String message);
-    }
-
-    public interface GsonRequestListener<D> {
-        void onResponse(String response, Response request, D gson);
         void onErrorResponse(String message);
     }
 }
