@@ -50,7 +50,7 @@ public class RequestNetwork {
         RequestNetworkController.getInstance().execute(this, method, url, requestListener);
     }
     
-    public Response request(String method, String url) {
+    public Return request(String method, String url) {
         return RequestNetworkController.getInstance().executeAsync(this, method, url);
     }
 
