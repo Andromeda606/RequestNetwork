@@ -51,8 +51,8 @@ public class RequestNetwork {
         RequestNetworkController.getInstance().execute(this, method, url, requestListener);
     }
     
-    public Return request(String method, String url) {
-        return new Return(RequestNetworkController.getInstance().executeAsync(this, method, url));
+    public Result request(String method, String url) {
+        return new Result(RequestNetworkController.getInstance().executeAsync(this, method, url));
     }
 
 
