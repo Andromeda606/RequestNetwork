@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import okhttp3.Headers;
 import okhttp3.Response;
-import com.andromeda.requestnetwork.request.Result;
+import com.andromeda.requestnetwork.request.Return;
 
 public class RequestNetwork {
     private HashMap<String, Object> params = new HashMap<>();
@@ -51,8 +51,8 @@ public class RequestNetwork {
         RequestNetworkController.getInstance().execute(this, method, url, requestListener);
     }
     
-    public Result request(String method, String url) {
-        return new Result(RequestNetworkController.getInstance().executeAsync(this, method, url));
+    public Return request(String method, String url) {
+        return new Return(RequestNetworkController.getInstance().executeAsync(this, method, url));
     }
 
 
