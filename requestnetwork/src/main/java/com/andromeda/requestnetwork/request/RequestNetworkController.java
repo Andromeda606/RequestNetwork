@@ -91,6 +91,14 @@ public class RequestNetworkController {
 
         return client;
     }
+    
+    public Response executeAsync(RequestNetwork requestNetwork, String method, String url) {
+        try {
+            return init(requestNetwork, method, url).execute();
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
 
     public void execute(RequestNetwork requestNetwork, String method, String url, RequestNetwork.RequestListener requestListener) {
