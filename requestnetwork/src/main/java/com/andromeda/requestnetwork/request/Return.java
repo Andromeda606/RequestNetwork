@@ -1,4 +1,4 @@
-package ccom.andromeda.requestnetwork.request;
+package com.andromeda.requestnetwork.request;
 
 import java.io.IOException;
 
