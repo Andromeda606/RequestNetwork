@@ -51,9 +51,9 @@ public class RequestNetwork {
     public void startRequestNetwork(String method, String url, RequestListener requestListener) {
         RequestNetworkController.getInstance().execute(this, method, url, requestListener);
     }
-
-    public <D> void startRequestNetworkGson(String method, String url, GsonRequestListener<D> requestListener) {
-        RequestNetworkController.getInstance().executee(this, method, url, requestListener, new TypeToken<D>(){}.getType());
+    
+    public void request(String method, String url) {
+        RequestNetworkController.getInstance().request(this, method, url);
     }
 
 
