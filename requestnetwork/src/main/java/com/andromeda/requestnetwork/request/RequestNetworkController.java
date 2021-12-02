@@ -92,7 +92,7 @@ public class RequestNetworkController {
         return client;
     }
     
-    public Return executeAsync(RequestNetwork requestNetwork, String method, String url) {
+    public Response executeAsync(RequestNetwork requestNetwork, String method, String url) {
         try {
             return init(requestNetwork, method, url).execute();
         } catch (Exception e) {
