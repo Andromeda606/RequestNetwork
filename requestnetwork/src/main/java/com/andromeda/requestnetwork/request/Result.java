@@ -1,4 +1,4 @@
-package com.androsoft.twitteraccountcreator.Model;
+package ccom.andromeda.requestnetwork.request;
 
 import java.io.IOException;
 
