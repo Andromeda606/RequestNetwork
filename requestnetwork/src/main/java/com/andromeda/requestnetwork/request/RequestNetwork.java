@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import okhttp3.Headers;
 import okhttp3.Response;
+import com.andromeda.requestnetwork.request.Result;
 
 public class RequestNetwork {
     private HashMap<String, Object> params = new HashMap<>();
