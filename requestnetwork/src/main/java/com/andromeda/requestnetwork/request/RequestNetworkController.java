@@ -133,50 +133,6 @@ public class RequestNetworkController {
         }
     }
 
-    public <D> void executee(RequestNetwork requestNetwork, String method, String url, RequestNetwork.GsonRequestListener<D> requestListener, Type type) {
-        try {
-
-            init(requestNetwork, method, url).enqueue(new Callback() {
-                @Override
-                public void onFailure(@NonNull Call call, @NonNull final IOException e) {
-                    if (requestNetwork.getActivity() == null) {
-                        requestListener.onErrorResponse(e.getMessage());
-                    } else {
-                        requestNetwork.getActivity().runOnUiThread(() -> requestListener.onErrorResponse(e.getMessage()));
-                    }
-
-                }
-
-                @Override
-                public void onResponse(@NonNull Call call, @NonNull final Response response) throws IOException {
-                    assert response.body() != null;
-                    final String responseBody = response.body().string().trim();
-                    if (requestNetwork.getActivity() == null) {
-                        try {
-                            D data = new Gson().fromJson(responseBody, type);
-                            requestListener.onResponse(responseBody, response, data);
-                        }catch (Exception exception){
-                            requestListener.onResponse(responseBody, response, null);
-                        }
-                    } else {
-                        requestNetwork.getActivity().runOnUiThread(() -> {
-                            try {
-                                D data = new Gson().fromJson(responseBody, type);
-                                requestListener.onResponse(responseBody, response, data);
-                            }catch (Exception exception){
-                                requestListener.onResponse(responseBody, response, null);
-                            }
-
-
-                        });
-                    }
-                }
-            });
-        } catch (Exception e) {
-            requestListener.onErrorResponse(e.getMessage());
-        }
-    }
-
     private Call init(RequestNetwork requestNetwork, String method, String url) {
         Request.Builder reqBuilder = new Request.Builder();
         Headers.Builder headerBuilder = new Headers.Builder();
