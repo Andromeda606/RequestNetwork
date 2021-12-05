@@ -7,6 +7,7 @@ import okhttp3.Response;
 public class Return {
     
     Response response;
+    String res = null;
     
     public Return(Response response){
         this.response = response;
@@ -14,7 +15,11 @@ public class Return {
 
     public String getString(){
         try {
-            return this.response.body().string();
+            if (res == null){
+                res = this.response.body().string();
+            }
+            return res;
+            
         } catch (IOException | NullPointerException nullPointerException) {
             return null;
         }
