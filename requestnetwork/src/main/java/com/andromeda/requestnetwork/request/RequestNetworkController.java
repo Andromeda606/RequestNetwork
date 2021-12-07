@@ -78,7 +78,7 @@ public class RequestNetworkController {
                 sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
                 final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
                 builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
-                builder.connectTimeout(SOCKET_TIMEOUT, TimeUnit.MILLISECONDS);
+                builder.connectTimeout(SOCKET_TIMEOUT, TimeUnit.MILLISECONDS).cache(null);
                 builder.readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS);
                 builder.writeTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS);
                 builder.hostnameVerifier((hostname, session) -> true);
