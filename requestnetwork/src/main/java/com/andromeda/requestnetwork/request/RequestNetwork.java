@@ -53,6 +53,14 @@ public class RequestNetwork {
     public Return request(String method, String url) {
         return new Return(RequestNetworkController.getInstance().executeAsync(this, method, url));
     }
+    
+    public Return post(String url) {
+        return new Return(RequestNetworkController.getInstance().executeAsync(this, RequestNetworkController.POST, url));
+    }
+    
+    public Return get(String url) {
+        return new Return(RequestNetworkController.getInstance().executeAsync(this, RequestNetworkController.GET, url));
+    }
 
 
     public interface RequestListener {
